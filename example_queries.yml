@@ -1,16 +1,29 @@
 prometheus_redis:
-    connection:
-        host: example.org  # defaults to localhost
-        port: 5432         # defaults to 6379
-        database: 9        # defaults to 0
-        password: passw0rd # defaults to nothing
+    connections:
+        redis1:
+            host: example.org  # defaults to localhost
+            port: 5432         # defaults to 6379
+            database: 9        # defaults to 0
+            password: passw0rd # defaults to nothing
+
+        redis2:
+            host: example.org
+            port: 5432
+            database: 9
 
     metrics:
         counter_1:
             name: counter_1 # optional, defaults to parent's key
             description: Value of counter1
+            connection: redis1
             query: GET cntr:1
 
         counter_2:
             description: Value of counter2
+            connection: redis1
             query: GET cntr:2
+
+        daily_ips_total:
+            description: Number of IPs visiting the website today
+            connection: redis2
+            query: PFCOUNT daily-ip
