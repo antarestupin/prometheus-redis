@@ -1,0 +1,16 @@
+prometheus_redis:
+    connection:
+        host: example.org  # defaults to localhost
+        port: 5432         # defaults to 6379
+        database: 9        # defaults to 0
+        password: passw0rd # defaults to nothing
+
+    metrics:
+        counter_1:
+            name: counter_1 # optional, defaults to parent's key
+            description: Value of counter1
+            query: GET cntr:1
+
+        counter_2:
+            description: Value of counter2
+            query: GET cntr:2
