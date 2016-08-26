@@ -1,4 +1,7 @@
 prometheus_redis:
+    server:
+        port: 9199 # defaults to 9118 (may change in the future)
+
     connections:
         redis1:
             host: example.org  # defaults to localhost
